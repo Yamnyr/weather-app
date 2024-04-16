@@ -1,15 +1,20 @@
-<div class="search">
-    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-        <input id="city" type="text" formControlName="city">
-        <button type="submit">Rechercher</button>
-    </form>
-</div>
+<!--<div class="search">-->
+<!--    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">-->
+<!--        <input id="city" type="text" formControlName="city">-->
+<!--    </form>-->
+<!--</div>-->
 <div class="container">
     <div class="upper-data">
         <img class="background" *ngIf="(weatherData.main.temp - 273.15) > 18" src="../assets/images/sun.jpg" alt="Sun">
         <img class="background" *ngIf="(weatherData.main.temp - 273.15) <= 18" src="../assets/images/rain.jpg" alt="Rain">
         <div class="weather-data">
-            <div class="location">{{ weatherData.name }}</div>
+            <div class="search location">
+                <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                    <input id="city" type="text" formControlName="city" placeholder="{{ weatherData.name }}">
+                </form>
+            </div>
+<!--            <div class="location">{{ weatherData.name }}</div>-->
+
             <div class="température">{{ (weatherData.main.temp - 273.15) | number:'1.0-1' }} °C</div>
             <img [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" alt="Weather Icon">
             <div class="location">
