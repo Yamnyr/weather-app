@@ -40,4 +40,12 @@ export class WeatherService {
       });
     }
   }
+  getWeatherByCity(city: any): void {
+    const apiKey = 'b050d0b64ae3ca445a124d163582ba38';
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    this.client.get(apiUrl).subscribe((data) => {
+      this.user.weatherData = data;
+      console.log("Weather Data:", this.user.weatherData);
+    });
+  }
 }
