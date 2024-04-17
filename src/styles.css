@@ -81,6 +81,8 @@ body{
     color: var(--white);
     text-align: center;
     font-size: 1.2em;
+    display: flex;
+    flex-direction: row;
 }
 
 .température{
@@ -158,11 +160,28 @@ body{
     color: var(--grey-1);
     font-size: 0.8em;
     text-align: center;
-    width: 280px;
+    width: 200px;
     font-weight: 600;
 }
 
 .search input::placeholder{
     color: var(--white);
     font-weight: 600;
+}
+button{
+    margin-left: 20px;
+    background-color: var(--shadow--light);
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    padding: 4%;
+    color: var(--grey-1);
+    font-size: 0.8em;
+    text-align: center;
+    width: 50px;
+    font-weight: 600;
+}
+
+img.pin{
+    width: 20px;
 }

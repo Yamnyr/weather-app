@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from "@angular/router";
-import { DecimalPipe, NgIf } from "@angular/common";
+import {DecimalPipe, NgIf, NgOptimizedImage} from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { WeatherService } from './weather.service';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -22,7 +22,8 @@ import { FormBuilder } from '@angular/forms';
     DecimalPipe,
     NgIf,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage
   ],
   // styleUrls: ['./app.component.css']
 })
@@ -36,6 +37,8 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient,private formBuilder: FormBuilder) {
 
+  }refreshPage(): void {
+    window.location.reload();
   }
   onSubmit() {
     // const city = this.checkoutForm.value.city

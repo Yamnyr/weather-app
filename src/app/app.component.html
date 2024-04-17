@@ -12,8 +12,16 @@
                 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
                     <input id="city" type="text" formControlName="city" placeholder="{{ weatherData.name }}">
                 </form>
+                <button type="button" (click)="refreshPage()">
+<!--                    Ma position-->
+                    <img class="pin" src="assets/icons/pin3.png" alt="ma position">
+                    <i class="fas fa-location-dot"></i> <!-- Icône de localisation -->
+                </button>
             </div>
-<!--            <div class="location">{{ weatherData.name }}</div>-->
+            <i class="fa-solid fa-coffee"></i>
+            <i class="fa-regular fa-square-plus"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <!--            <div class="location">{{ weatherData.name }}</div>-->
 
             <div class="température">{{ (weatherData.main.temp - 273.15) | number:'1.0-1' }} °C</div>
             <img [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" alt="Weather Icon">
