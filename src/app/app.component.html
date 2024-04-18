@@ -14,13 +14,10 @@
                 </form>
                 <button type="button" (click)="refreshPage()">
 <!--                    Ma position-->
-                    <img class="pin" src="assets/icons/pin3.png" alt="ma position">
+<!--                    <img class="pin" src="assets/icons/pin3.png" alt="ma position">-->
                     <i class="fas fa-location-dot"></i> <!-- Icône de localisation -->
                 </button>
             </div>
-            <i class="fa-solid fa-coffee"></i>
-            <i class="fa-regular fa-square-plus"></i>
-            <i class="fa-brands fa-youtube"></i>
             <!--            <div class="location">{{ weatherData.name }}</div>-->
 
             <div class="température">{{ (weatherData.main.temp - 273.15) | number:'1.0-1' }} °C</div>
