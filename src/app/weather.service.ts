@@ -26,8 +26,10 @@ export class WeatherService {
         this.getWeatherData();
       });
     } else {
+      this.getWeatherByCity("Paris");
       console.log("No support for geolocation");
     }
+    this.getWeatherByCity("Paris");
   }
   getWeatherData(): void {
     const apiKey = 'b050d0b64ae3ca445a124d163582ba38';
