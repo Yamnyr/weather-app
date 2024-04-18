@@ -19,18 +19,25 @@ export class ForecastService {
 
   getUserLocationForecast(): void {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.user.userCoordinates = {
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        };
-        this.getWeatherData();
-      });
+      navigator.geolocation.getCurrentPosition(
+          (position) => {
+            this.user.userCoordinates = {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            };
+            this.getWeatherData();
+          },
+          () => {
+            console.log("L'accès à la géolocalisation a été refusé. Utilisation de la ville par défaut.");
+            this.getForecastByCity("paris"); // Utilisation de la ville par défaut
+          }
+      );
     } else {
-      console.log("No support for geolocation");
+      console.log("La géolocalisation n'est pas supportée. Utilisation de la ville par défaut.");
+      this.getForecastByCity("paris"); // Utilisation de la ville par défaut
     }
-    this.getForecastByCity("Paris");
   }
+
   getWeatherData(): void {
     const apiKey = 'b050d0b64ae3ca445a124d163582ba38';
     if (this.user.userCoordinates) {

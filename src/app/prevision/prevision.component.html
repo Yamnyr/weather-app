@@ -8,12 +8,11 @@
     <div class="lower-data list">
         <div class="search location">
             <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-                <input class="large-input" id="city" type="text" formControlName="city" placeholder="{{ weatherData.city.name }}">
+                <input class="large-input" id="city" type="text" formControlName="city" [placeholder]="weatherData?.city?.name || 'Entrez le nom de la ville'">
             </form>
             <button type="button" (click)="refreshPage()">
-                <!--                    Ma position-->
-                <!--                    <img class="pin" src="assets/icons/pin3.png" alt="ma position">-->
-                <i class="fas fa-location-dot"></i> <!-- Icône de localisation -->
+                <!-- Icône de localisation -->
+                <i class="fas fa-location-dot"></i>
             </button>
         </div>
     <div class="forecast-list">

@@ -4,7 +4,7 @@
 <!--    </form>-->
 <!--</div>-->
 
-<div class="container">
+<div class="container" *ngIf="weatherData">
     <div class="upper-data">
         <img class="background" *ngIf="(weatherData.main.temp - 273.15) > 18" src="../assets/images/sun.jpg" alt="Sun">
         <img class="background" *ngIf="(weatherData.main.temp - 273.15) <= 18" src="../assets/images/rain.jpg" alt="Rain">
