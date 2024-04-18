@@ -1,0 +1,83 @@
+<!--<div class="search">-->
+<!--    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">-->
+<!--        <input id="city" type="text" formControlName="city">-->
+<!--    </form>-->
+<!--</div>-->
+
+<div class="container">
+    <div class="upper-data">
+        <img class="background" *ngIf="(weatherData.main.temp - 273.15) > 18" src="../assets/images/sun.jpg" alt="Sun">
+        <img class="background" *ngIf="(weatherData.main.temp - 273.15) <= 18" src="../assets/images/rain.jpg" alt="Rain">
+        <div class="weather-data">
+            <div class="search location">
+                <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                    <input id="city" type="text" formControlName="city" placeholder="{{ weatherData.name }}">
+                </form>
+                <button type="button" (click)="refreshPage()">
+                    <!--                    Ma position-->
+                    <!--                    <img class="pin" src="assets/icons/pin3.png" alt="ma position">-->
+                    <i class="fas fa-location-dot"></i> <!-- Icône de localisation -->
+                </button>
+            </div>
+            <!--            <div class="location">{{ weatherData.name }}</div>-->
+
+            <div class="température">{{ (weatherData.main.temp - 273.15) | number:'1.0-1' }} °C</div>
+            <img [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" alt="Weather Icon">
+            <div class="location">
+                {{ weatherData.weather[0].description }}
+            </div>
+        </div>
+    </div>
+    <div class="lower-data">
+        <div class="more-info-container">
+            <div class="info-block">
+                <div class="info-block-label">
+                    <img src="../assets/images/low-temperature-icon.png">
+                    <span>min</span>
+                </div>
+                <div class="info-block-value">
+                    {{ (weatherData.main.temp_min - 273.15) | number:'1.0-1' }} °C
+                </div>
+            </div>
+            <div class="info-block">
+                <div class="info-block-label">
+                    <img src="../assets/images/high-temperature-icon.png">
+                    <span>max</span>
+                </div>
+                <div class="info-block-value">
+                    {{ (weatherData.main.temp_max - 273.15) | number:'1.0-1' }} °C
+                </div>
+            </div>
+            <div class="info-block">
+                <div class="info-block-label">
+                    <img src="../assets/images/Humidity-icon.png">
+                    <span>humidité</span>
+                </div>
+                <div class="info-block-value">
+                    <p>{{ weatherData.main.humidity }}%</p>
+                </div>
+            </div>
+            <div class="info-block">
+                <div class="info-block-label">
+                    <img src="../assets/images/wind.png">
+                    <span>vent</span>
+                </div>
+                <div class="info-block-value">
+                    {{ weatherData.wind.speed }} km/h
+                </div>
+            </div>
+        </div>
+        <!--      <h2>Weather Information</h2>-->
+        <!--      <p>City: {{ weatherData.name }}</p>-->
+        <!--      <p>Temperature: {{ (weatherData.main.temp - 273.15) | number:'1.0-1' }} °C</p>-->
+        <!--      <p>Humidity: {{ weatherData.main.humidity }}%</p>-->
+        <!--      <p>Description: {{ weatherData.weather[0].description }}</p>-->
+    </div>
+</div>
+<div class="nav">
+    <a routerLink="/meteo">meteo</a>
+    <a routerLink="/prevision">Prévision</a>
+</div>
+<main>
+    <router-outlet></router-outlet>
+</main>

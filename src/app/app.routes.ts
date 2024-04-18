@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-// import { MeteoComponent } from './meteo/meteo.component';
+import { PrevisionComponent } from './prevision/prevision.component';
+import { MeteoComponent } from './meteo/meteo.component';
 
 export  const  routes: Routes = [
     { path: '', redirectTo: '/meteo', pathMatch: 'full' },
-    // { path: 'meteo', component: MeteoComponent },
-    // { path: 'products/:id', component: DetailProductComponent },
+    { path: 'prevision', component: PrevisionComponent },
+    { path: 'meteo', component: MeteoComponent },
 ];
 
 @NgModule({

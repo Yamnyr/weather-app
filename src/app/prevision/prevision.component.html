@@ -1,0 +1,46 @@
+<!--<div class="search">-->
+<!--    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">-->
+<!--        <input id="city" type="text" formControlName="city">-->
+<!--    </form>-->
+<!--</div>-->
+
+<div class="container">
+    <div class="lower-data list">
+        <div class="search location">
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                <input class="large-input" id="city" type="text" formControlName="city" placeholder="{{ weatherData.city.name }}">
+            </form>
+            <button type="button" (click)="refreshPage()">
+                <!--                    Ma position-->
+                <!--                    <img class="pin" src="assets/icons/pin3.png" alt="ma position">-->
+                <i class="fas fa-location-dot"></i> <!-- Icône de localisation -->
+            </button>
+        </div>
+    <div class="forecast-list">
+    <div *ngIf="weatherData">
+<!--        <h2>Prévisions météorologiques</h2>-->
+        <table>
+            <tbody>
+            <tr *ngFor="let forecast of weatherData.list">
+                <td>{{ formatDate(forecast.dt_txt) }}</td>
+                <td>{{ (forecast.main.temp - 273.15) | number:'1.0-1' }} °C</td>
+                <td>{{ forecast.weather[0].description }}</td>
+                <td><img [src]="'https://openweathermap.org/img/wn/' + forecast.weather[0].icon + '.png'" alt="Weather Icon"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="!weatherData">
+        <p>Chargement des données météorologiques...</p>
+    </div>
+    </div>
+</div>
+</div>
+<div class="nav">
+    <a routerLink="/meteo">meteo</a>
+    <a routerLink="/prevision">Prévision</a>
+</div>
+<main>
+    <router-outlet></router-outlet>
+</main>
